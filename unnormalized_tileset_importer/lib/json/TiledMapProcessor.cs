@@ -1,19 +1,20 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Content.Pipeline;
+using UnnormalizedTilesetImporter;
 
 namespace TiledMapPipeline
 {
     [ContentProcessor(DisplayName = "Tiled Map Processor")]
-    public class TiledMapProcessor : ContentProcessor<string, JsonContentProcessorResult>
+    public class TiledMapProcessor : ContentProcessor<string, ContentProcessorResult>
     {
-        public override JsonContentProcessorResult Process(string input, ContentProcessorContext context)
+        public override ContentProcessorResult Process(string input, ContentProcessorContext context)
         {
             try
             {
                 context.Logger.LogMessage("Starting Processor");
-                var output = new JsonContentProcessorResult
+                var output = new ContentProcessorResult
                 {
-                    Json = input,
+                    ContentValue = input,
                     ContentProcessorContext = context
                 };
                 context.Logger.LogMessage("Processor Finished");

@@ -1,17 +1,17 @@
 ﻿using Microsoft.Xna.Framework.Content.Pipeline;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
-using Newtonsoft.Json;
+using UnnormalizedTilesetImporter;
 
 namespace TiledMapPipeline 
 {
     [ContentTypeWriter]
-    public class TiledMapWriter : ContentTypeWriter<JsonContentProcessorResult>
+    public class TiledMapWriter : ContentTypeWriter<ContentProcessorResult>
     {
-        protected override void Write(ContentWriter output, JsonContentProcessorResult value)
+        protected override void Write(ContentWriter output, ContentProcessorResult value)
         {
             value.ContentProcessorContext.Logger.LogMessage("Starting Writer");
-            output.Write(value.Json);
-            value.ContentProcessorContext.Logger.LogMessage("Json {0}:", value.Json);
+            output.Write(value.ContentValue);
+            value.ContentProcessorContext.Logger.LogMessage("Json {0}:", value.ContentValue);
             value.ContentProcessorContext.Logger.LogMessage("Writer Finished!");
         }
 
