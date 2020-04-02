@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using Microsoft.Xna.Framework.Content.Pipeline;
-
+using Newtonsoft.Json;
 
 namespace TiledMapPipeline
 {

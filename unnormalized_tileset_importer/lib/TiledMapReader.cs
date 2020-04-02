@@ -1,46 +1,23 @@
-﻿using System;
-using System.Diagnostics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
 using Microsoft.Xna.Framework.Content;
+using Newtonsoft.Json;
 
 namespace TiledMapPipeline
 {
-    public class TiledMapReader : ContentTypeReader<TileCoordinates[]>
+    public class TiledMapReader : ContentTypeReader<TilesCoorinatesJson>
     {
-        protected override TileCoordinates[] Read(ContentReader input, TileCoordinates[] existingInstance)
+        protected override TilesCoorinatesJson Read(ContentReader input, TilesCoorinatesJson existingInstance)
         {
-            Debug.WriteLine("Starting TiledMapReader");
-            try {
-                var tilesAmount = input.ReadInt32();
-                var tiles = new List<TileCoordinates>();
-
-                for (var i = 0; i < tilesAmount; i++)
-                {
-                    var tile = new TileCoordinates
-                    {
-                        FileName = input.ReadString(),
-                        Width = input.ReadInt32(),
-                        Length = input.ReadInt32(),
-                        X = input.ReadInt32(),
-                        Y = input.ReadInt32()
-                    };
-                    var anchor = new Anchor
-                    {
-                        X = input.ReadInt32(),
-                        Y = input.ReadInt32()
-                    };
-                    tile.Anchor = anchor;
-                    tiles.Add(tile);
-                }
-
-                return tiles.ToArray();
-            }
-            catch (Exception e)
+            var json = input.ReadString();
+            using (var stringReader = new StringReader(json))
+            using (var jsonReader = new JsonTextReader(stringReader))
             {
-                Debug.WriteLine($"Error {e.Message}");
-                Debug.WriteLine($"params: {input.ReadString()}");
-                throw;
+                var serializer = new JsonSerializer();
+                return serializer.Deserialize<TilesCoorinatesJson>(jsonReader);
             }
+
+            // return JsonConvert.DeserializeObject<TilesCoorinatesJson>(input.ReadString());
         }
     }
 }
