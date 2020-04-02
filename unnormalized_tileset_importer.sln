@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unnormalized_tilemap_importer", "unnormalized_tileset_importer\unnormalized_tilemap_importer.csproj", "{3F45328A-7C58-4075-8721-2A5D62B0C814}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unnormalized_tileset_importer", "unnormalized_tileset_importer\unnormalized_tileset_importer.csproj", "{3F45328A-7C58-4075-8721-2A5D62B0C814}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
