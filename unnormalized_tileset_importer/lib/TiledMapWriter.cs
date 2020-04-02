@@ -3,13 +3,11 @@ using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
 
 namespace TiledMapPipeline 
 {
-    public class TiledMapWriter : ContentTypeWriter<TiledMapProcessorResult>
+    public class TiledMapWriter : ContentTypeWriter<TilesCoorinatesJson>
     {
-        protected override void Write(ContentWriter output, TiledMapProcessorResult value)
+        protected override void Write(ContentWriter output, TilesCoorinatesJson value)
         {
-            output.Write(value.TilesCoorinatesJson.Tiles.Length);
-
-            foreach (var tile in value.TilesCoorinatesJson.Tiles)
+            foreach (var tile in value.Tiles)
             {
                 output.Write(tile.FileName);
                 output.Write(tile.Width);
