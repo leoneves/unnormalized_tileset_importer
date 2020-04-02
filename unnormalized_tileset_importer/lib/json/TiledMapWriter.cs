@@ -9,7 +9,10 @@ namespace TiledMapPipeline
     {
         protected override void Write(ContentWriter output, JsonContentProcessorResult value)
         {
+            value.ContentProcessorContext.Logger.LogMessage("Starting Writer");
             output.Write(value.Json);
+            value.ContentProcessorContext.Logger.LogMessage("Json {0}:", value.Json);
+            value.ContentProcessorContext.Logger.LogMessage("Writer Finished!");
         }
 
         public override string GetRuntimeType(TargetPlatform targetPlatform)
