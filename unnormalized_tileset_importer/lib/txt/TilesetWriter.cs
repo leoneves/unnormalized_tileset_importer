@@ -1,27 +1,26 @@
 ﻿using Microsoft.Xna.Framework.Content.Pipeline;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
 
-namespace TiledMapPipeline 
+namespace TilesetPipeline
 {
     [ContentTypeWriter]
-    public class TiledMapWriter : ContentTypeWriter<JsonContentProcessorResult>
+    public class TilesetWriter : ContentTypeWriter<TextContentProcessorResult>
     {
-        protected override void Write(ContentWriter output, JsonContentProcessorResult value)
+        protected override void Write(ContentWriter output, TextContentProcessorResult value)
         {
             value.ContentProcessorContext.Logger.LogMessage("Starting Writer");
-            output.Write(value.Json);
-            value.ContentProcessorContext.Logger.LogMessage("Json {0}:", value.Json);
+            output.Write(value.Text);
             value.ContentProcessorContext.Logger.LogMessage("Writer Finished!");
         }
 
         public override string GetRuntimeType(TargetPlatform targetPlatform)
         {
-            return typeof(TilesCoorinatesJson).AssemblyQualifiedName;
+            return typeof(string[]).AssemblyQualifiedName;
         }
 
         public override string GetRuntimeReader(TargetPlatform targetPlatform)
         {
-            return "TiledMapPipeline.TiledMapReader, unnormalized_tileset_importer";
+            return "TilesetPipeline.TilesetReader, unnormalized_tileset_importer";
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework.Content.Pipeline;
 
-namespace UnnormalizedTilesetImporter
+namespace TilesetPipeline
 {
-    public class ContentProcessorResult
+    public class TextContentProcessorResult
     {
         public ContentProcessorContext ContentProcessorContext { get; set; }
-        public string ContentValue { get; set; }
+        public string Text { get; set; }
     }
 }
