@@ -5,32 +5,21 @@ using Newtonsoft.Json;
 namespace TiledMapPipeline 
 {
     [ContentTypeWriter]
-    public class TiledMapWriter : ContentTypeWriter<string>
+    public class TiledMapWriter : ContentTypeWriter<JsonContentProcessorResult>
     {
-        protected override void Write(ContentWriter output, string value)
+        protected override void Write(ContentWriter output, JsonContentProcessorResult value)
         {
-            output.Write(value);
-
-            /*foreach (var tile in value.Tiles)
-            {
-                output.Write(tile.FileName);
-                output.Write(tile.Width);
-                output.Write(tile.Length);
-                output.Write(tile.X);
-                output.Write(tile.Y);
-                output.Write(tile.Anchor.X);
-                output.Write(tile.Anchor.Y);
-            }*/
+            output.Write(value.Json);
         }
 
         public override string GetRuntimeType(TargetPlatform targetPlatform)
         {
-            return "System.Object";
+            return typeof(TilesCoorinatesJson).AssemblyQualifiedName;
         }
 
         public override string GetRuntimeReader(TargetPlatform targetPlatform)
         {
-            return "TiledMapPipeline.TiledMapReader, TiledMapPipeline";
+            return "TiledMapPipeline.TiledMapReader, unnormalized_tileset_importer";
         }
     }
 }
