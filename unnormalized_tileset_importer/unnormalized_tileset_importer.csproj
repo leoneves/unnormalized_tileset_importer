@@ -4,14 +4,15 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="lib\" />
-    <Folder Include="lib\json\" />
-    <Folder Include="lib\txt\" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.8.0.13">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MonoGame.Framework.Content.Pipeline.Portable" Version="3.7.1.189">
-        <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <Reference Include="lib\MonoGame.Framework.Content.Pipeline.dll">
+      <HintPath>lib\MonoGame.Framework.Content.Pipeline.dll</HintPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Reference>
   </ItemGroup>
 </Project>
